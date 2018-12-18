@@ -24,7 +24,7 @@ export default class SignUp extends Component {
           <h5 className="grey-text text-darken-3">
             Sign Up -- Join Us for Free
           </h5>
-
+          <br />
           <div className="input-field">
             <label htmlFor="firstName">First Name</label>
             <input
