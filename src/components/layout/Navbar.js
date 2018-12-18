@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="nav-wrapper purple darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">
-          WePlan
+          wePlan
         </Link>
         <SignInLinks />
         <SignOutLinks />
