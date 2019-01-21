@@ -27,6 +27,29 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <style>
+      .sidenav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        height: 120vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 997;
+        display: none;
+      }
+      .drag-target {
+        height: 100%;
+        width: 10px;
+        position: fixed;
+        top: 0;
+        z-index: 998;
+      }
+      #sidenav {
+        z-index: 9999;
+      }
+    </style>
     <!-- Import materialize.css -->
     <!--
       <link
@@ -58,6 +81,21 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      (function($) {
+        $(function() {
+          $(".sidenav").sidenav();
+        }); // end of document ready
+      })(jQuery); // end of jQuery name space
+
+      /* var sidenavs = document.querySelectorAll(".sidenav");
+      for (var i = 0; i < sidenavs.length; i++) {
+        M.Sidenav.init(sidenavs[i]);
+      } */
+    </script>
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
   </body>
 </html>
