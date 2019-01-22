@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signin } from "../../store/actions/authActions";
 
-export default class SignIn extends Component {
+class SignIn extends Component {
   state = {
     email: "",
     password: ""
@@ -13,9 +15,11 @@ export default class SignIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
+    this.props.signin(this.state);
   };
   render() {
+    const { authError } = this.props;
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit} autoComplete="off">
@@ -32,8 +36,28 @@ export default class SignIn extends Component {
           <div className="input-field">
             <button className="btn pink ligthen-1 z-depth-0">Enter</button>
           </div>
+          <div className="red-text center">
+            {authError ? <p>{authError}</p> : null}
+          </div>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signin: creds => dispatch(signin(creds))
+  };
+};
+
+export default connect(
+  mapStateToProps, //1st params is 'mapStateToProps
+  mapDispatchToProps
+)(SignIn);
