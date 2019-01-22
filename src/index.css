@@ -11,7 +11,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   /* background-position: fixed; */
-  background-color: #9ae7f5;
+  /* background-color: #9ae7f5;  // light-blue */
+  background-color: #6713a0; /* puple*/
   /* min-height: 100%; */
 }
 
