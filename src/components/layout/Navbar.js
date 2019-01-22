@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SignInLinks from "./SignInLinks";
 import SignOutLinks from "./SignOutLinks";
 import Sidenav from "./Sidenav";
+import { connect } from "react-redux";
 
 const Navbar = () => {
   // $(document).ready(function() {
@@ -27,4 +28,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = state => {
+  console.log(state);
+  return {};
+};
+export default connect(mapStateToProps)(Navbar);
