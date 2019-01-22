@@ -5,10 +5,10 @@ import SignOutLinks from "./SignOutLinks";
 import Sidenav from "./Sidenav";
 import { connect } from "react-redux";
 
-const Navbar = () => {
-  // $(document).ready(function() {
-  //   $(".sidenav").sidenav();
-  // });
+const Navbar = props => {
+  const { auth } = props;
+  console.log(auth);
+  const links = auth.uid ? <SignInLinks /> : <SignOutLinks />;
   return (
     <div className="navbar-fixed">
       <nav className="nav-wrapper purple darken-3">
@@ -19,8 +19,7 @@ const Navbar = () => {
           <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </Link>
-          <SignInLinks />
-          <SignOutLinks />
+          {links}
           <Sidenav />
         </div>
       </nav>
@@ -29,7 +28,9 @@ const Navbar = () => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
-  return {};
+  // console.log(state);
+  return {
+    auth: state.firebase.auth
+  };
 };
 export default connect(mapStateToProps)(Navbar);
