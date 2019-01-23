@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const ProjectSummary = ({ project }) => {
   return (
@@ -13,7 +14,9 @@ const ProjectSummary = ({ project }) => {
               {project.authorFirstName} {project.authorLastName}
             </span>
           </p>
-          <p className="grey-text">2nd December, 8am</p>
+          <p className="grey-text">
+            {moment(project.createdAt.toDate()).calendar()}
+          </p>
         </div>
       </div>
     </div>
