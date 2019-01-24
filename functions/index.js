@@ -3,6 +3,8 @@ const admin = require("firebase-admin");
 
 admin.initializeApp(functions.config().firebase);
 
+admin.firestore().settings({ timestampsInSnapshots: true });
+
 exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
@@ -27,3 +29,35 @@ exports.projectCreated = functions.firestore
 
     return createNotification(notification);
   });
+
+exports.newUserJoin = functions.firestore
+  .document("users/{userID}")
+  .onCreate((snap, context) => {
+    const user = snap.data();
+    const displayName = `${user.firstName} ${user.lastName}`;
+    console.log(user, "user");
+    const notification = {
+      content: "New user join our project",
+      user: displayName,
+      time: admin.firestore.FieldValue.serverTimestamp()
+    };
+    return createNotification(notification);
+  });
+
+// exports.userJoined = functions.auth.user().onCreate(user => {
+//   return admin
+//     .firestore()
+//     .collection("users")
+//     .doc(user.uid)
+//     .get()
+//     .then(doc => {
+//       const newUser = doc.data();
+//       console.log(newUser.);
+//       const notification = {
+//         content: "Joined the party",
+//         user: `${newUser.firstName} ${newUser.lastName}`,
+//         time: admin.firestore.FieldValue.serverTimestamp()
+//       };
+//     });
+//   return createNotification(notification);
+// });
