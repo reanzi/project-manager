@@ -37,7 +37,7 @@ exports.newUserJoin = functions.firestore
     const displayName = `${user.firstName} ${user.lastName}`;
     console.log(user, "user");
     const notification = {
-      content: "New user join our project",
+      content: " Join the party",
       user: displayName,
       time: admin.firestore.FieldValue.serverTimestamp()
     };
