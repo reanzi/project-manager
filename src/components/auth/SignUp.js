@@ -6,7 +6,7 @@ import { signup } from "../../store/actions/authActions";
 class SignUp extends Component {
   state = {
     firstName: "",
-    LastName: "",
+    lastName: "",
     email: "",
     password: ""
   };
