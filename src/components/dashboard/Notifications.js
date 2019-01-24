@@ -3,29 +3,27 @@ import moment from "moment";
 
 const Notifications = props => {
   const { notifications } = props;
-  console.log(notifications);
-  // let notification;
 
-  // const notifyUI =
-  //   {notification &&
-  //   notifications.map(notice => {
-  //     return (
-  //       <li key={notice.id}>
-  //         <span className="pink-text">{notice.user}</span>
-  //         <span>{notice.content}</span>
-  //         <div className="grey-text note-date">
-  //           {moment(notice.time.toDate()).fromNow()}
-  //         </div>
-  //       </li>
-  //     );
-  //   })};
+  const notifyUI =
+    notifications &&
+    notifications.map(notice => {
+      return (
+        <li key={notice.id}>
+          <span className="pink-text">{notice.user}</span>
+          <span>{notice.content}</span>
+          <div className="grey-text note-date">
+            {moment(notice.time.toDate()).fromNow()}
+          </div>
+        </li>
+      );
+    });
   return (
     <div className="section">
       <div className="card z-depth-0">
         <div className="card-content">
           <span className="card-title grey-text"> Notifications</span>
           <ul className="notifications">
-            {notifications &&
+            {/* {notifications &&
               notifications.map(notice => {
                 return (
                   <li key={notice.id}>
@@ -36,7 +34,9 @@ const Notifications = props => {
                     </div>
                   </li>
                 );
-              })}
+              })} */}
+
+            {notifyUI}
           </ul>
         </div>
       </div>
