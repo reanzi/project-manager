@@ -6,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./store/reducer/rootReducer";
 import { Provider } from "react-redux";
+// import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import thunk from "redux-thunk";
 import { reduxFirestore, getFirestore } from "redux-firestore";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
@@ -32,7 +33,9 @@ const store = createStore(
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
     <Provider store={store}>
+      {/* <ReactReduxFirebaseProvider {...fbConfig}> */}
       <App />
+      {/* </ReactReduxFirebaseProvider> */}
     </Provider>,
     document.getElementById("root")
   );
